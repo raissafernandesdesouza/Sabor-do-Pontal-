@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183c36">
+  <meta name="description" content="Buffet generoso, sabores mineiros e uma vista especial para o Lago de Furnas. Conheça o Restaurante Sabor do Pontal, em Carmo do Rio Claro.">
+  <title>Sabor do Pontal | À mesa, de frente para Furnas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #183c36;
+      --forest-deep: #102d29;
+      --lake: #dcebe6;
+      --paper: #f7f6f0;
+      --white: #fffefa;
+      --ink: #1d2925;
+      --muted: #69756e;
+      --coral: #d96f4d;
+      --line: rgba(24, 60, 54, .16);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1200px, calc(100% - 64px)); margin-inline: auto; }
+
+    .topbar { position: absolute; z-index: 2; inset: 0 0 auto; color: var(--white); background: rgba(16,45,41,.94); backdrop-filter: blur(12px); }
+    .nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.16); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0; }
+    .brand-mark { display: grid; width: 40px; aspect-ratio: 1; place-items: center; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; font-family: var(--serif); font-size: 19px; }
+    .brand small { display: block; margin-top: 3px; font-size: 10px; font-weight: 500; opacity: .8; }
+    .nav-links { display: flex; align-items: center; gap: 32px; font-size: 13px; }
+    .nav-links a:not(.nav-cta) { opacity: .88; transition: opacity .2s; }
+    .nav-links a:not(.nav-cta):hover { opacity: 1; }
+    .nav-cta { padding: 12px 17px; color: var(--forest-deep); background: var(--white); font-weight: 700; }
+
+    .hero { position: relative; display: flex; min-height: 700px; min-height: min(790px, 100svh); align-items: end; overflow: hidden; color: var(--white); background: var(--forest-deep); }
+    .hero::before { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,31,28,.76) 0%, rgba(10,31,28,.48) 45%, rgba(10,31,28,.08) 100%), linear-gradient(0deg, rgba(10,31,28,.36), transparent 44%); content: ""; }
+    .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 54%; }
+    .hero-blur { position: absolute; inset: 0 auto 0 0; z-index: 1; width: min(920px, 78%); background: linear-gradient(90deg, rgba(10,31,28,.32), rgba(10,31,28,.24) 68%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); mask-image: linear-gradient(90deg, #000 0%, #000 66%, transparent 100%); pointer-events: none; }
+    .hero-content { position: relative; z-index: 2; padding: 180px 0 100px; }
+    .eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 20px; font-size: 11px; font-weight: 700; letter-spacing: 1.7px; text-transform: uppercase; }
+    .eyebrow::before { width: 28px; height: 1px; background: var(--coral); content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 700px; margin-bottom: 24px; font-family: var(--serif); font-size: clamp(54px, 7vw, 88px); font-weight: 500; letter-spacing: 0; line-height: .99; }
+    h1 em { color: #b9d6cb; font-weight: 500; }
+    .hero-copy { max-width: 420px; margin-bottom: 30px; color: rgba(255,255,255,.84); font-size: 15px; line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0 20px; font-size: 12px; font-weight: 700; transition: background .2s, color .2s, transform .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-light { color: var(--forest-deep); background: var(--white); }
+    .button-light:hover { background: var(--lake); }
+    .button-outline { border: 1px solid rgba(255,255,255,.7); color: var(--white); }
+    .button-outline:hover { color: var(--forest-deep); background: var(--white); }
+    .hero-caption { position: absolute; right: 32px; bottom: 30px; z-index: 2; color: rgba(255,255,255,.85); font-size: 10px; letter-spacing: .3px; }
+
+    .quick-facts { position: relative; z-index: 1; margin-top: -1px; color: var(--white); background: var(--forest); }
+    .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .fact { min-height: 104px; display: flex; flex-direction: column; justify-content: center; padding: 20px 28px; border-right: 1px solid rgba(255,255,255,.18); }
+    .fact:first-child { padding-left: 0; }
+    .fact:last-child { border: 0; }
+    .fact strong { margin-bottom: 6px; font-family: var(--serif); font-size: 23px; font-weight: 500; }
+    .fact span { color: rgba(255,255,255,.69); font-size: 11px; }
+    .stars { color: #f0bf72; font-family: var(--sans); font-size: 15px; letter-spacing: 1px; }
+
+    .intro { padding: 115px 0 110px; background: var(--paper); }
+    .intro-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 12%; align-items: start; }
+    .section-label { margin-bottom: 18px; color: var(--coral); font-size: 10px; font-weight: 700; letter-spacing: 1.7px; text-transform: uppercase; }
+    h2 { margin-bottom: 23px; font-family: var(--serif); font-size: clamp(38px, 4vw, 55px); font-weight: 500; letter-spacing: 0; line-height: 1.08; }
+    .intro-copy { max-width: 470px; padding-top: 35px; color: #59665f; font-size: 15px; line-height: 1.85; }
+    .intro-copy p { margin-bottom: 18px; }
+    .text-link { display: inline-flex; gap: 12px; align-items: center; margin-top: 7px; color: var(--forest); font-size: 12px; font-weight: 700; }
+    .text-link span { color: var(--coral); font-size: 17px; transition: transform .2s; }
+    .text-link:hover span { transform: translateX(4px); }
+
+    .flavors { padding: 94px 0 105px; color: var(--white); background: var(--forest-deep); }
+    .flavors-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 49px; }
+    .flavors h2 { max-width: 540px; margin-bottom: 0; }
+    .flavors-head p { max-width: 290px; margin: 0 0 5px; color: rgba(255,255,255,.68); font-size: 13px; line-height: 1.7; }
+    .flavor-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.25); }
+    .flavor { min-height: 207px; padding: 27px 30px 20px 0; border-right: 1px solid rgba(255,255,255,.2); }
+    .flavor + .flavor { padding-left: 30px; }
+    .flavor:last-child { border-right: 0; }
+    .flavor-number { display: block; margin-bottom: 35px; color: #e69b78; font-family: var(--serif); font-size: 14px; }
+    .flavor h3 { margin-bottom: 9px; font-family: var(--serif); font-size: 25px; font-weight: 500; }
+    .flavor p { max-width: 285px; margin-bottom: 0; color: rgba(255,255,255,.67); font-size: 12px; line-height: 1.7; }
+
+    .visit { padding: 105px 0; background: var(--lake); }
+    .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12%; align-items: center; }
+    .visit h2 { max-width: 450px; }
+    .visit-copy { max-width: 420px; color: #59665f; font-size: 14px; line-height: 1.8; }
+    .address { margin: 24px 0 28px; color: var(--ink); font-size: 13px; font-weight: 600; line-height: 1.7; }
+    .visit-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .button-forest { color: var(--white); background: var(--forest); }
+    .button-forest:hover { background: var(--forest-deep); }
+    .button-quiet { border: 1px solid rgba(24,60,54,.36); color: var(--forest); }
+    .button-quiet:hover { color: var(--white); background: var(--forest); }
+    .visit-note { margin-top: 21px; color: #687770; font-size: 11px; }
+    .map-card { position: relative; min-height: 350px; overflow: hidden; background: #aecdc3; }
+    .map-card::before, .map-card::after { position: absolute; border: 1px solid rgba(24,60,54,.18); border-radius: 50%; content: ""; }
+    .map-card::before { width: 520px; height: 300px; left: -80px; top: -90px; transform: rotate(-24deg); }
+    .map-card::after { width: 520px; height: 300px; right: -210px; bottom: -180px; transform: rotate(28deg); }
+    .map-water { position: absolute; inset: 0; background: linear-gradient(145deg, transparent 38%, rgba(240,249,245,.56) 38.2%, rgba(240,249,245,.56) 40%, transparent 40.2%), linear-gradient(25deg, transparent 61%, rgba(240,249,245,.42) 61.2%, rgba(240,249,245,.42) 62.4%, transparent 62.6%); }
+    .map-label { position: absolute; top: 28px; left: 28px; color: rgba(24,60,54,.7); font-family: var(--serif); font-size: 15px; }
+    .map-pin { position: absolute; top: 49%; left: 52%; display: grid; width: 58px; aspect-ratio: 1; place-items: center; border: 1px solid rgba(255,255,255,.8); border-radius: 50%; color: var(--white); background: var(--coral); box-shadow: 0 8px 26px rgba(16,45,41,.25); font-family: var(--serif); font-size: 22px; transform: translate(-50%, -50%); }
+    .map-caption { position: absolute; right: 18px; bottom: 18px; left: 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 17px 19px; background: var(--white); }
+    .map-caption strong { display: block; margin-bottom: 4px; font-size: 12px; }
+    .map-caption small { color: var(--muted); font-size: 10px; }
+    .map-caption a { color: var(--forest); font-size: 11px; font-weight: 700; white-space: nowrap; }
+
+    .footer { padding: 27px 0; color: rgba(255,255,255,.75); background: var(--forest-deep); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 10px; }
+    .footer a { color: var(--white); }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 40px, 560px); }
+      .nav { min-height: 72px; }
+      .nav-links { gap: 15px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 11px 13px; font-size: 11px; }
+      .hero { min-height: 710px; min-height: min(790px, 95svh); }
+      .hero::before { background: linear-gradient(90deg, rgba(10,31,28,.7), rgba(10,31,28,.24)), linear-gradient(0deg, rgba(10,31,28,.65), transparent 70%); }
+      .hero-image { object-position: 58% center; }
+      .hero-blur { width: 100%; background: linear-gradient(90deg, rgba(10,31,28,.28), rgba(10,31,28,.18)); mask-image: linear-gradient(90deg, #000 0%, #000 80%, transparent 100%); }
+      .hero-content { padding: 155px 0 86px; }
+      h1 { max-width: 500px; font-size: clamp(39px, 10vw, 56px); }
+      .hero-copy { max-width: 350px; font-size: 14px; }
+      .hero-caption { right: 20px; bottom: 15px; font-size: 9px; }
+      .facts-grid { grid-template-columns: 1fr 1fr; }
+      .fact { min-height: 88px; padding: 17px 18px; border-bottom: 1px solid rgba(255,255,255,.18); }
+      .fact:first-child { padding-left: 18px; }
+      .fact:nth-child(2) { border-right: 0; }
+      .fact:nth-child(3), .fact:nth-child(4) { border-bottom: 0; }
+      .fact strong { font-size: 20px; }
+      .intro, .visit { padding: 76px 0; }
+      .intro-grid, .visit-grid { grid-template-columns: 1fr; gap: 22px; }
+      .intro-copy { padding-top: 0; }
+      h2 { font-size: 42px; }
+      .flavors { padding: 75px 0; }
+      .flavors-head { display: block; margin-bottom: 35px; }
+      .flavors-head p { margin-top: 18px; }
+      .flavor-list { grid-template-columns: 1fr; }
+      .flavor, .flavor + .flavor { min-height: auto; padding: 22px 0 25px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+      .flavor:last-child { border-bottom: 0; }
+      .flavor-number { margin-bottom: 14px; }
+      .map-card { min-height: 300px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="Sabor do Pontal, início">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span>SABOR DO PONTAL<small>CARMO DO RIO CLARO · MG</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#experiencia">A experiência</a>
+        <a href="#sabores">À mesa</a>
+        <a href="#visite">Como chegar</a>
+        <a class="nav-cta" href="https://wa.me/5535992208424" target="_blank" rel="noopener noreferrer">Fale com a gente</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <img class="hero-image" src="https://lh3.googleusercontent.com/grass-cs/AABkmLf52c7n53kZV0bQDIwiA3yl5levFtluhP1MzbqeGGfZSV1B7Ri8QDCANrUPZwe1ChBhEDVEMuY2fFWvGKB_gi16zlMsJocaJ5EQlZHgC_ZPajYzRnKqghxCJqBTM5_yuByGbJws=w1600-h1000-k-no" alt="Foto do Restaurante Sabor do Pontal publicada no perfil do Google Maps" fetchpriority="high">
+      <div class="hero-blur" aria-hidden="true"></div>
+      <div class="hero-content wrap">
+        <p class="eyebrow">Às margens do Lago de Furnas</p>
+        <h1 id="hero-title">Sabor de Minas.<br><em>Vista para Furnas.</em></h1>
+        <p class="hero-copy">Comida feita para aproveitar sem pressa: buffet variado, peixe fresco, churrasco e o horizonte lindo da represa.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="https://www.google.com/maps/search/?api=1&query=Restaurante+Sabor+do+Pontal+Carmo+do+Rio+Claro+MG">Como chegar <span aria-hidden="true">↗</span></a>
+          <a class="button button-outline" href="tel:+5535992208424">Ligar para o restaurante</a>
+        </div>
+      </div>
+      <span class="hero-caption">Imagem do perfil do restaurante no Google Maps</span>
+    </section>
+
+    <section class="quick-facts" aria-label="Informações do restaurante">
+      <div class="facts-grid wrap">
+        <div class="fact"><strong><span class="stars" aria-label="5 estrelas">★★★★★</span> 4,6</strong><span>862 avaliações no Google</span></div>
+        <div class="fact"><strong>R$ 60–80</strong><span>Faixa por pessoa informada</span></div>
+        <div class="fact"><strong>Self-service</strong><span>Buffet à vontade e por quilo</span></div>
+        <div class="fact"><strong>12h30</strong><span>Horário de abertura informado</span></div>
+      </div>
+    </section>
+
+    <section class="intro" id="experiencia">
+      <div class="intro-grid wrap">
+        <div>
+          <p class="section-label">Uma pausa com sabor</p>
+          <h2>O melhor da mesa mineira, com Furnas ali na frente.</h2>
+        </div>
+        <div class="intro-copy">
+          <p>Um lugar para reunir a família, fazer uma parada na estrada ou simplesmente esticar o almoço. Por aqui, a comida é farta, o atendimento é acolhedor e a paisagem convida a ficar mais um pouco.</p>
+          <p>Escolha entre saladas, pratos quentes, carnes preparadas na hora e receitas que já viraram favoritas de quem passa por Carmo do Rio Claro.</p>
+          <a class="text-link" href="https://www.google.com/maps/place/Restaurante+Sabor+do+Pontal/">Veja fotos e avaliações <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="flavors" id="sabores">
+      <div class="wrap">
+        <div class="flavors-head">
+          <div>
+            <p class="section-label">Feito para dar vontade</p>
+            <h2>Tem sempre um bom motivo para voltar.</h2>
+          </div>
+          <p>Sabores que aparecem com frequência nas recomendações de quem já sentou à mesa do Pontal.</p>
+        </div>
+        <div class="flavor-list">
+          <article class="flavor">
+            <span class="flavor-number">01</span>
+            <h3>Tilápia do jeito certo</h3>
+            <p>Fresca, preparada com capricho. A recheada com provolone é uma das mais lembradas.</p>
+          </article>
+          <article class="flavor">
+            <span class="flavor-number">02</span>
+            <h3>Carne na brasa</h3>
+            <p>Cortes como Angus e ancho, feitos na hora para chegar à mesa no ponto.</p>
+          </article>
+          <article class="flavor">
+            <span class="flavor-number">03</span>
+            <h3>Um doce final</h3>
+            <p>Pudim, café expresso e aquela sobremesa que fecha o almoço com gosto de quero mais.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visite">
+      <div class="visit-grid wrap">
+        <div>
+          <p class="section-label">Estamos te esperando</p>
+          <h2>Na estrada, pertinho do lago.</h2>
+          <p class="visit-copy">Chegue para almoçar, celebrar ou fazer uma pausa com vista para a represa. Há estacionamento gratuito e acesso para pessoas com mobilidade reduzida.</p>
+          <p class="address">Aterro Santa Quitéria<br>Carmo do Rio Claro – MG · CEP 37150-000</p>
+          <div class="visit-actions">
+            <a class="button button-forest" href="https://www.google.com/maps/search/?api=1&query=Restaurante+Sabor+do+Pontal+Carmo+do+Rio+Claro+MG">Abrir no Maps <span aria-hidden="true">↗</span></a>
+            <a class="button button-quiet" href="tel:+5535992208424">(35) 99220-8424</a>
+          </div>
+          <p class="visit-note">Abre às 12h30, conforme informação do perfil. Consulte o restaurante para confirmar o horário.</p>
+        </div>
+        <div class="map-card" role="img" aria-label="Ilustração da região do Lago de Furnas e localização do restaurante">
+          <div class="map-water"></div>
+          <span class="map-label">Lago de Furnas</span>
+          <span class="map-pin" aria-hidden="true">P</span>
+          <div class="map-caption">
+            <span><strong>Restaurante Sabor do Pontal</strong><small>Aterro Santa Quitéria · Carmo do Rio Claro</small></span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Sabor+do+Pontal+Carmo+do+Rio+Claro+MG">Ver rota ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner wrap">
+      <span>© Sabor do Pontal · Carmo do Rio Claro, MG</span>
+      <a href="https://www.facebook.com/restaurantesabordopontal">Facebook oficial ↗</a>
+    </div>
+  </footer>
+</body>
+</html>
